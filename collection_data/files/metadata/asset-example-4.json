@@ -1,0 +1,111 @@
+{
+  "name": "Aurorian #715",
+  "symbol": "AUROR",
+  "description": "The villagers from the whole country have gathered in Neftiville for the party, meet the Aurorians.",
+  "seller_fee_basis_points": 500,
+  "image": "https://aurorians.cdn.aurory.io/aurorians-v2/current/images/full/715.png",
+  "external_url": "https://app.aurory.io/aurorian/2021/715",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Soft Blue"
+    },
+    {
+      "trait_type": "Background V2",
+      "value": "Dawn"
+    },
+    {
+      "trait_type": "Cloth",
+      "value": "Dracurve Outfit"
+    },
+    {
+      "trait_type": "Cloth V2",
+      "value": "Dracurve Knight"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Base Eyes"
+    },
+    {
+      "trait_type": "Eyes V2",
+      "value": "Brown Eyes"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "No Trait"
+    },
+    {
+      "trait_type": "Hair V2",
+      "value": "No Trait"
+    },
+    {
+      "trait_type": "Hat",
+      "value": "No Trait"
+    },
+    {
+      "trait_type": "Hat V2",
+      "value": "No Trait"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Angry"
+    },
+    {
+      "trait_type": "Mouth V2",
+      "value": "Angry"
+    },
+    {
+      "trait_type": "Necklace",
+      "value": "Shark Necklace"
+    },
+    {
+      "trait_type": "Necklace V2",
+      "value": "Bone Necklace"
+    },
+    {
+      "display_type": "number",
+      "trait_type": "Sequence",
+      "value": 715
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Human"
+    },
+    {
+      "trait_type": "Skin V2",
+      "value": "Human"
+    },
+    {
+      "trait_type": "Type",
+      "value": "Aurorian"
+    },
+    {
+      "display_type": "number",
+      "trait_type": "Generation",
+      "value": 2
+    }
+  ],
+  "properties": {
+    "category": "image",
+    "files": [
+      {
+        "uri": "https://aurorians.cdn.aurory.io/aurorians-v2/current/images/full/715.png",
+        "type": "image/png"
+      },
+      {
+        "uri": "https://aurorians.cdn.aurory.io/aurorians-v2/current/images/mini/715.png",
+        "type": "image/png"
+      }
+    ],
+    "creators": [
+      {
+        "address": "2P8twAxdHUZ2cWgWYMrGVkYZELSEffhdjMgjSFu7cTFS",
+        "share": 65
+      },
+      {
+        "address": "CsKFoW9fNJcueYufg8cPEH59nzM1QH5FwPXUvLwS7GMD",
+        "share": 35
+      }
+    ]
+  }
+}

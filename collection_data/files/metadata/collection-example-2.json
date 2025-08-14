@@ -1,0 +1,15 @@
+{
+  "name": "Claynosaurz",
+  "symbol": "DINO",
+  "description": "Claynosaurz is a collection of 10,000 3D animated NFTs.",
+  "image": "https://nftstorage.link/ipfs/bafybeiese3bgyfewt2r3dxvgups2blc3rwh2utvidirxgxq527mhcv3ydy",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://nftstorage.link/ipfs/bafybeiese3bgyfewt2r3dxvgups2blc3rwh2utvidirxgxq527mhcv3ydy",
+        "type": "image/gif"
+      }
+    ],
+    "category": "image"
+  }
+}

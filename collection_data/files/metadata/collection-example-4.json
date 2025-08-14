@@ -1,0 +1,27 @@
+{
+  "name": "Aurorians",
+  "symbol": "AUROR",
+  "description": "Aurory Project - https://aurory.io",
+  "seller_fee_basis_points": 500,
+  "image": "https://images.cdn.aurory.io/logo/aurorians.png",
+  "properties": {
+    "files": [
+      {
+        "type": "image/png",
+        "uri": "https://images.cdn.aurory.io/logo/aurorians.png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "2P8twAxdHUZ2cWgWYMrGVkYZELSEffhdjMgjSFu7cTFS",
+        "share": 65
+      },
+      {
+        "address": "CsKFoW9fNJcueYufg8cPEH59nzM1QH5FwPXUvLwS7GMD",
+        "share": 35
+      }
+    ]
+  }
+}
+

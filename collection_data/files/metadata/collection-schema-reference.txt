@@ -1,0 +1,33 @@
+{
+  "name": "Aurorians", // The name of the NFT collection
+  "symbol": "AUROR", // The symbol for the NFT collection
+  "description": "Aurory Project - https://aurory.io", 
+  // How much royalty creators receives from secondary sales. One basis point equals 0.01%.
+  // 500 points equals 5% royalty (Most common).
+  "seller_fee_basis_points": 500,
+  "image": "https://images.cdn.aurory.io/logo/aurorians.png", // The image/logo for the NFT collection
+  "properties": {
+     // Additional metadata including files and categories
+    "files": [
+      {
+        // The "type" is the MIME type of the file (https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types).
+        "type": "image/png",
+        "uri": "https://images.cdn.aurory.io/logo/aurorians.png"
+      }
+    ],
+    "category": "image", // Type of NFT content (vr, html, audio, image, html) (Required)
+    "creators": [
+      {
+        // An array that defines who gets paid when the NFT generates royalties from secondary
+        // sales. The percentage is applied on top of the royalty amount in seller_fee_basis_points
+        "address": "2P8twAxdHUZ2cWgWYMrGVkYZELSEffhdjMgjSFu7cTFS",
+        "share": 65 // Gets 65% of the royalties
+      },
+      {
+        "address": "CsKFoW9fNJcueYufg8cPEH59nzM1QH5FwPXUvLwS7GMD",
+        "share": 35 // Gets 35% of the royalties
+      }
+    ]
+  }
+}
+

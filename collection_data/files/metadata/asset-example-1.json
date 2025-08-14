@@ -1,0 +1,37 @@
+{
+  "name": "Okay Bear #2447",
+  "symbol": "OKB",
+  "description": "Okay Bears is a culture shift. A clean collection of 10,000 diverse bears building a virtuous community that will transcend the internet into the real world.",
+  "image": "https://arweave.net/XAYroXHDoNoF9qCBofp0CS6CzvD6jiYmP__Sl6iwmXQ",
+  "external_url": "https://www.okaybears.com/",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Grey"
+    },
+    {
+      "trait_type": "Fur",
+      "value": "Panda"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Hmm"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Robot"
+    },
+    {
+      "trait_type": "Hat",
+      "value": "Earrings"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Wool Overcoat"
+    }
+  ],
+  "collection": {
+    "name": "Okay Bears",
+    "family": "Okay Bears"
+  }
+}

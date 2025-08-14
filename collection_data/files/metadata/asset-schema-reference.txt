@@ -1,0 +1,61 @@
+{
+    "name": "Sensei #272", // The name of your NFT asset (Required)
+    "symbol": "SENSEI", // 
+    "description": "Breathe In, Breathe Out", // A detailed description of your NFT (Required)
+    "image": "https://sensei.launchifi.xyz/gif/271.gif", // URI pointing to the primary image of your NFT (Required)
+    "external_url": "https://claynosaurz.com", // Link to an external website for the NFT
+    // How much royalty creators receives from secondary sales. One basis point equals 0.01%.
+    // 500 points equals 5% royalty (Most common).
+    "seller_fee_basis_points": 500, 
+    "attributes": [ 
+        // Array of traits and their values. These can be alternatively stored onchain using the
+        // Attributes Plugin (https://developers.metaplex.com/core/plugins/attribute)
+        {
+            "trait_type": "Background",
+            "value": "Teal"
+        },
+        {
+            "trait_type": "Skin",
+            "value": "Teal"
+        },
+        {
+            "trait_type": "Body",
+            "value": "Care Bear Onesie"
+        },
+        {
+            "trait_type": "Hat",
+            "value": "None"
+        }
+    ],
+    "properties": { 
+        // Additional metadata including files and categories
+        "files": [ 
+            // The "type" is the MIME type of the file (https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types).
+            {
+                // Main version, animated.
+                "uri": "https://sensei.launchifi.xyz/gif/271.gif",
+                "type": "image/gif"
+            },
+            {
+                // Static version, may be used by some applications for faster loading.
+                "uri": "https://sensei.launchifi.xyz/png/271.png",
+                "type": "image/png"
+            }
+        ],
+        "category": "image", // Type of NFT content (vr, html, audio, image, html) (Required)
+        "creators": [
+            // An array that defines who gets paid when the NFT generates royalties from secondary
+            // sales. The percentage is applied on top of the royalty amount in seller_fee_basis_points
+            {
+                "address": "9Y6Ng9rNLbq4bqCkVJXUjbFhQJEzZ3AvUxpqx3ffu4gY",
+                "share": 90 // Gets 90% of royalties
+            },
+            {   
+                "address": "5W2x2RWbCfCh2kmTeuAnDBUJbHTz2uKcjJcSBCJPB8dE",
+                "share": 10 // Gets 10% of royalties
+            }
+        ]
+    },
+    // Which platform/tool was used to create the collection (optional)
+    "engine": "launchifi.xyz"
+}
