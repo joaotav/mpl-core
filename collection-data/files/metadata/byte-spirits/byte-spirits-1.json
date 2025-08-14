@@ -2,7 +2,7 @@
     "name": "Byte Spirit #1", 
     "symbol": "BSPR", 
     "description": "Byte Spirits is a cyberpunk-inspired chibi NFT collection where vibrant anime-style guardians defend the digital realm.", 
-    "image": "", 
+    "image": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-1.png", 
     "external_url": "N/A", 
     "seller_fee_basis_points": 500, 
     "attributes": [ 
@@ -30,11 +30,7 @@
     "properties": { 
         "files": [ 
             {
-                "uri": "https://sensei.launchifi.xyz/gif/271.gif",
-                "type": "image/gif"
-            },
-            {
-                "uri": "https://sensei.launchifi.xyz/png/271.png",
+                "uri": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-1.png",
                 "type": "image/png"
             }
         ],
