@@ -1,36 +1,36 @@
 {
-    "name": "Byte Spirits #6", 
+    "name": "Byte Spirits #9", 
     "symbol": "BSPR", 
     "description": "Byte Spirits is a cyberpunk-inspired chibi NFT collection where vibrant anime-style guardians defend the digital realm.", 
-    "image": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-6.png", 
+    "image": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-9.png", 
     "external_url": "N/A", 
     "seller_fee_basis_points": 500, 
     "attributes": [ 
         {
             "trait_type": "Gender",
-            "value": "Female"
+            "value": "Male"
         },
         {
             "trait_type": "Left Eye Color",
-            "value": "Blue"
+            "value": "Neon Blue"
         },
         {
             "trait_type": "Right Eye Color",
-            "value": "Blue"
+            "value": "Neon Blue"
         },
         {
             "trait_type": "Pet",
-            "value": "AI Cube Drone"
+            "value": "Glitch Wolf"
         },
         {
             "trait_type": "Weapon",
-            "value": "Packet Rifle"
+            "value": "Pixel Shuriken"
         }
     ],
     "properties": { 
         "files": [ 
             {
-                "uri": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-6.png",
+                "uri": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-9.png",
                 "type": "image/png"
             }
         ],
