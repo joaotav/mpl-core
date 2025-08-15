@@ -1,49 +1,49 @@
 {
-    "name": "Sensei #272",
-    "symbol": "SENSEI",
-    "description": "Breathe In, Breathe Out",
-    "image": "https://sensei.launchifi.xyz/gif/271.gif",
-    "seller_fee_basis_points": 500,
-    "attributes": [
-        {
-            "trait_type": "Background",
-            "value": "Teal"
-        },
-        {
-            "trait_type": "Skin",
-            "value": "Teal"
-        },
-        {
-            "trait_type": "Body",
-            "value": "Care Bear Onesie"
-        },
-        {
-            "trait_type": "Hat",
-            "value": "None"
-        }
-    ],
-    "properties": {
-        "files": [
-            {
-                "uri": "https://sensei.launchifi.xyz/gif/271.gif",
-                "type": "image/gif"
-            },
-            {
-                "uri": "https://sensei.launchifi.xyz/png/271.png",
-                "type": "image/png"
-            }
-        ],
-        "category": "image",
-        "creators": [
-            {
-                "address": "9Y6Ng9rNLbq4bqCkVJXUjbFhQJEzZ3AvUxpqx3ffu4gY",
-                "share": 90
-            },
-            {
-                "address": "5W2x2RWbCfCh2kmTeuAnDBUJbHTz2uKcjJcSBCJPB8dE",
-                "share": 10
-            }
-        ]
+  "name": "Sensei #272",
+  "symbol": "SENSEI",
+  "description": "Breathe In, Breathe Out",
+  "image": "https://sensei.launchifi.xyz/gif/271.gif",
+  "seller_fee_basis_points": 500,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Teal"
     },
-    "engine": "launchifi.xyz"
+    {
+      "trait_type": "Skin",
+      "value": "Teal"
+    },
+    {
+      "trait_type": "Body",
+      "value": "Care Bear Onesie"
+    },
+    {
+      "trait_type": "Hat",
+      "value": "None"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://sensei.launchifi.xyz/gif/271.gif",
+        "type": "image/gif"
+      },
+      {
+        "uri": "https://sensei.launchifi.xyz/png/271.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "9Y6Ng9rNLbq4bqCkVJXUjbFhQJEzZ3AvUxpqx3ffu4gY",
+        "share": 90
+      },
+      {
+        "address": "5W2x2RWbCfCh2kmTeuAnDBUJbHTz2uKcjJcSBCJPB8dE",
+        "share": 10
+      }
+    ]
+  },
+  "engine": "launchifi.xyz"
 }

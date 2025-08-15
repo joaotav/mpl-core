@@ -1,45 +1,45 @@
 {
-    "name": "Byte Spirits #3", 
-    "symbol": "BSPR", 
-    "description": "Byte Spirits is a cyberpunk-inspired chibi NFT collection where vibrant anime-style guardians defend the digital realm.", 
-    "image": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-3.png", 
-    "external_url": "N/A", 
-    "seller_fee_basis_points": 500, 
-    "attributes": [ 
-        {
-            "trait_type": "Gender",
-            "value": "Male"
-        },
-        {
-            "trait_type": "Left Eye Color",
-            "value": "Blue"
-        },
-        {
-            "trait_type": "Right Eye Color",
-            "value": "Blue"
-        },
-        {
-            "trait_type": "Pet",
-            "value": "Shadow Cat"
-        },
-        {
-            "trait_type": "Weapon",
-            "value": "Cyber Sword"
-        }
-    ],
-    "properties": { 
-        "files": [ 
-            {
-                "uri": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-3.png",
-                "type": "image/png"
-            }
-        ],
-        "category": "image", 
-        "creators": [
-            {
-                "address": "CYHgUSh26Qnhu8qrhx2XFCAdL5DQk3NC7EZ2DV4jzdRM",
-                "share": 100 
-            }
-        ]
+  "name": "Byte Spirits #3",
+  "symbol": "BSPR",
+  "description": "Byte Spirits is a cyberpunk-inspired chibi NFT collection where vibrant anime-style guardians defend the digital realm.",
+  "image": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-3.png",
+  "external_url": "N/A",
+  "seller_fee_basis_points": 500,
+  "attributes": [
+    {
+      "trait_type": "Gender",
+      "value": "Male"
+    },
+    {
+      "trait_type": "Left Eye Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Right Eye Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Pet",
+      "value": "Shadow Cat"
+    },
+    {
+      "trait_type": "Weapon",
+      "value": "Cyber Sword"
     }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/images/byte-spirits/byte-spirits-3.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "CYHgUSh26Qnhu8qrhx2XFCAdL5DQk3NC7EZ2DV4jzdRM",
+        "share": 100
+      }
+    ]
+  }
 }
