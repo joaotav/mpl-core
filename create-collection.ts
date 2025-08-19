@@ -1,15 +1,15 @@
 // imports createUmi which allows us to build a ready-to-use Umi client
 import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
 import {
-  createV1, // Build instructions to create collections and assets with Metaplex Core
   mplCore, // The Metaplex Core program plugin
   fetchAssetV1, // Read asset information
   transferV1, // Transfer assets
-  createCollectionV1, // Build instructions to create collections and assets with Metaplex Core
+  createCollection, // Build instructions to create collections and assets with Metaplex Core
+  create, // Build instructions to create collections and assets with Metaplex Core
+  fetchCollection,
   getAssetV1GpaBuilder, // Allow building program-account queries (getProgramAccounts - gPA)
   Key, // enum discriminators
   updateAuthority, // helper to construct UpdateAuthority
-  pluginAuthorityPair, // helper for Core plugins
   ruleSet, // helper for Core plugins
   addPlugin, // helper for Core plugins
 } from '@metaplex-foundation/mpl-core';
@@ -20,12 +20,15 @@ import {
   signerIdentity, // sets the default signer/fee-payer for all builders
   sol, // Convenience for SOL amounts
   createSignerFromKeypair, // Used to wrap a keypair into a Umi signer
+  Signer,
+  Umi,
+  PublicKey,
 } from '@metaplex-foundation/umi';
 
 import * as fs from 'fs';
 import * as path from 'path';
 
-function loadLocalWallet(umi: Umi, walletPath?: string): Signer {
+function loadWallet(umi: Umi, walletPath?: string): Signer {
   // Looks for a wallet in walletPath if specified, otherwise loads the wallet from
   // the default location.
   const defaultWalletPath = path.join(
@@ -58,7 +61,7 @@ const umi = createUmi('https://api.devnet.solana.com', 'confirmed').use(mplCore(
 const asset = generateSigner(umi);
 
 // Load a Solana wallet
-const payer = loadLocalWallet(umi);
+const payer = loadWallet(umi);
 
 // Set the wallet as the default identity to pay fees, rent and sign instructions.
 // Instructions that don't explicitly take a signer/authority will use the default.
@@ -87,7 +90,7 @@ async function main() {
   const collectionAddress = generateSigner(umi);
 
   // Create a Core NFT collection
-  await createCollectionV1(umi, {
+  await createCollection(umi, {
     name: 'Byte Spirits', // The collection's name on-chain
     // The uri points to off-chain JSON metadata that describes the asset (name, image, attributes, description)
     uri: 'https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/metadata/byte-spirits/byte-spirits-collection.json',
@@ -98,38 +101,39 @@ async function main() {
     // to make the collection immutable.
     updateAuthority: payer.publicKey,
     plugins: [
-      pluginAuthorityPair({
+      {
         // Add the royalties plugin to the collection.
         type: 'Royalties',
-        data: {
-          basisPoints: 500, // 5% royalties are generated from secondary sales
-          creators: [
-            // Creators among which the royalties are split
-            {
-              address: payer.publicKey,
-              percentage: 100, // This creator/address receives 100% of the royalties
-            },
-          ],
-          ruleSet: ruleSet('None'), // No extra rule gating
-        },
-      }),
+        basisPoints: 500, // 5% royalties are generated from secondary sales
+        creators: [
+          // Creators among which the royalties are split
+          {
+            address: payer.publicKey,
+            percentage: 100, // This creator/address receives 100% of the royalties
+          },
+        ],
+        ruleSet: ruleSet('None'), // No extra rule gating
+      },
     ],
   }).sendAndConfirm(umi, txConfig);
 
   console.log('» Creating collection:', collectionAddress.publicKey.toString());
   console.log();
+
+  const collection = await fetchCollection(umi, collectionAddress.publicKey);
+
   // Add an asset to the collection
   console.log('» Creating Asset:', asset.publicKey.toString());
   console.log();
 
-  await createV1(umi, {
+  await create(umi, {
     name: 'Byte Spirits #1', // The asset's name on-chain
     // The asset's off-chain metadata (name, description, attributes, image)
     uri: 'https://raw.githubusercontent.com/joaotav/mpl-core/refs/heads/main/collection-data/files/metadata/byte-spirits/byte-spirits-1.json',
     asset: asset, // A Signer object for the new asset's account
     // collection defines the collection to which this asset will be linked. This individual asset's
     // update authority is automatically set to the previously set collection's update authority.
-    collection: collectionAddress.publicKey,
+    collection: collection,
     // authority must be a key that possesses the permission to mint an asset into this collection.
     // It can be the collection's update authority or an address that has been given permission
     // to mint through delegations, rules or plugins.
