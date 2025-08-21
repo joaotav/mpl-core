@@ -1,24 +1,21 @@
 import js from '@eslint/js';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
 import { defineConfig } from 'eslint/config';
-import prettierPlugin from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
+import prettierPlugin from 'eslint-plugin-prettier';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   // Base JS config
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
+    files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       js,
       prettier: prettierPlugin,
       import: importPlugin,
     },
-    extends: [
-      'js/recommended',
-      eslintConfigPrettier, // disables rules that conflict with Prettier
-    ],
+    extends: ['js/recommended', eslintConfigPrettier],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -26,10 +23,28 @@ export default defineConfig([
       },
     },
     rules: {
-      // Run Prettier via ESLint
       'prettier/prettier': 'error',
-
-      // Example import order rule
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index']],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
+    },
+  },
+  // TypeScript config
+  ...tseslint.configs.recommended,
+  {
+    files: ['**/*.{ts,mts,cts}'],
+    plugins: {
+      prettier: prettierPlugin,
+      import: importPlugin,
+    },
+    extends: [eslintConfigPrettier],
+    rules: {
+      'prettier/prettier': 'error',
       'import/order': [
         'error',
         {
