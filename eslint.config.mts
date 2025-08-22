@@ -8,14 +8,13 @@ import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   // Base JS config
+  js.configs.recommended,
   {
-    files: ['**/*.{js,mjs,cjs}'],
+    files: ['**/*.{js,jsx,mjs,cjs}'],
     plugins: {
-      js,
       prettier: prettierPlugin,
       import: importPlugin,
     },
-    extends: ['js/recommended', eslintConfigPrettier],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -34,15 +33,15 @@ export default defineConfig([
       ],
     },
   },
+
   // TypeScript config
   ...tseslint.configs.recommended,
   {
-    files: ['**/*.{ts,mts,cts}'],
+    files: ['**/*.{ts,tsx,mts,cts}'],
     plugins: {
       prettier: prettierPlugin,
       import: importPlugin,
     },
-    extends: [eslintConfigPrettier],
     rules: {
       'prettier/prettier': 'error',
       'import/order': [
@@ -55,4 +54,7 @@ export default defineConfig([
       ],
     },
   },
+
+  // Prettier config (should be last)
+  eslintConfigPrettier,
 ]);
