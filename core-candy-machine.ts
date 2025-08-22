@@ -99,6 +99,12 @@ async function checkCandyMachine(
   }
 }
 
+function calculateCost(startingBalance: SolAmount, finalBalance: SolAmount): number {
+  const startingSol = Number(startingBalance.basisPoints) / 1_000_000_000;
+  const finalSol = Number(finalBalance.basisPoints) / 1_000_000_000;
+  return startingSol - finalSol;
+}
+
 async function main() {
   console.log(`Testing Candy Machine Core...`);
   console.log(`Important account information:`);
@@ -109,7 +115,7 @@ async function main() {
     candyMachine: candyMachine.publicKey.toString(),
   });
 
-  // 2. Create a collection
+  // Create a collection
   try {
     await createCollection(umi, {
       collection: collectionMint,
@@ -136,7 +142,7 @@ async function main() {
     console.log('2. ❌ - Error creating collection.');
   }
 
-  // 3. Create a Candy Machine
+  // Create a Candy Machine
   try {
     const createIx = await create(umi, {
       candyMachine,
@@ -168,7 +174,7 @@ async function main() {
     console.log('3. ❌ - Error creating Candy Machine.');
   }
 
-  // 4. Add items to the Candy Machine
+  // Add items to the Candy Machine
   try {
     await addConfigLines(umi, {
       candyMachine: candyMachine.publicKey,
@@ -184,7 +190,7 @@ async function main() {
     console.log('4. ❌ - Error adding items to the Candy Machine.');
   }
 
-  // 5. Verify the Candy Machine configuration
+  // Verify the Candy Machine configuration
   await checkCandyMachine(
     umi,
     candyMachine.publicKey,
@@ -197,7 +203,7 @@ async function main() {
     5,
   );
 
-  // 6. Mint NFTs
+  // Mint NFTs
   try {
     const numMints = 3;
     let minted = 0;
@@ -225,7 +231,7 @@ async function main() {
     console.log('6. ❌ - Error minting NFTs.');
   }
 
-  // 7. Verify the Candy Machine configuration
+  // Verify the Candy Machine configuration
   await checkCandyMachine(
     umi,
     candyMachine.publicKey,
@@ -238,7 +244,7 @@ async function main() {
     7,
   );
 
-  // 8. Delete the Candy Machine
+  // Delete the Candy Machine
   try {
     await deleteCandyMachine(umi, {
       candyMachine: candyMachine.publicKey,
