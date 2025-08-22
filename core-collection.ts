@@ -1,9 +1,10 @@
-// imports createUmi which allows us to build a ready-to-use Umi client
 import * as fs from 'fs';
 import * as path from 'path';
 
 import {
   mplCore, // The Metaplex Core program plugin
+  fetchAssetV1, // Read asset information
+  transferV1, // Transfer assets
   createCollection, // Build instructions to create collections and assets with Metaplex Core
   create, // Build instructions to create collections and assets with Metaplex Core
   fetchCollection,
@@ -11,16 +12,20 @@ import {
   Key, // enum discriminators
   updateAuthority, // helper to construct UpdateAuthority
   ruleSet, // helper for Core plugins
+  addPlugin, // helper for Core plugins
 } from '@metaplex-foundation/mpl-core';
 import {
   TransactionBuilderSendAndConfirmOptions,
   generateSigner, // Create new ed25519 keypairs
   signerIdentity, // sets the default signer/fee-payer for all builders
+  sol, // Convenience for SOL amounts
   createSignerFromKeypair, // Used to wrap a keypair into a Umi signer
   Signer,
   Umi,
+  PublicKey,
+  SolAmount,
 } from '@metaplex-foundation/umi';
-import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
+import { createUmi } from '@metaplex-foundation/umi-bundle-defaults'; // imports createUmi which allows us to build a ready-to-use Umi client
 
 function loadWallet(umi: Umi, walletPath?: string): Signer {
   // Looks for a wallet in walletPath if specified, otherwise loads the wallet from
@@ -71,8 +76,46 @@ const txConfig: TransactionBuilderSendAndConfirmOptions = {
   // Setting skiPreflight to true skips the simulation, but is riskier. Skipping the simulation is
   // useful when we want lower latency and overhead (mint race, trading or arbitrage bot).
   send: { skipPreflight: false },
-  confirm: { commitment: 'confirmed' },
+  confirm: { commitment: 'finalized' },
 };
+
+async function transferNFT(
+  umi: Umi,
+  assetAddress: PublicKey,
+  collectionAddress: PublicKey,
+  newOwner: PublicKey,
+  currentOwner?: Signer,
+): Promise<number> {
+  const startingBalance = await umi.rpc.getBalance(payer.publicKey);
+
+  console.log('» Transferring NFT...');
+  console.log('  Asset:', assetAddress.toString());
+  console.log('  From:', currentOwner?.publicKey.toString() || payer.publicKey.toString());
+  console.log('  To:', newOwner.toString());
+  console.log();
+
+  await transferV1(umi, {
+    asset: assetAddress,
+    collection: collectionAddress,
+    newOwner: newOwner,
+    authority: currentOwner || payer, // Current owner must sign the transfer
+  }).sendAndConfirm(umi, txConfig);
+
+  const finalBalance = await umi.rpc.getBalance(payer.publicKey);
+  const transferCost = calculateCost(startingBalance, finalBalance);
+
+  console.log('» Transfer completed!');
+  console.log('  Transfer cost:', transferCost, 'SOL');
+  console.log();
+
+  return transferCost;
+}
+
+function calculateCost(startingBalance: SolAmount, finalBalance: SolAmount): number {
+  const startingSol = Number(startingBalance.basisPoints) / 1_000_000_000;
+  const finalSol = Number(finalBalance.basisPoints) / 1_000_000_000;
+  return startingSol - finalSol;
+}
 
 async function main() {
   // Check wallet balance
@@ -82,6 +125,9 @@ async function main() {
   console.log();
   // Generate a keypair to be used as the address for an asset representing a collection.
   const collectionAddress = generateSigner(umi);
+
+  console.log('» Creating collection:', collectionAddress.publicKey.toString());
+  console.log();
 
   // Create a Core NFT collection
   await createCollection(umi, {
@@ -111,9 +157,6 @@ async function main() {
     ],
   }).sendAndConfirm(umi, txConfig);
 
-  console.log('» Creating collection:', collectionAddress.publicKey.toString());
-  console.log();
-
   const collection = await fetchCollection(umi, collectionAddress.publicKey);
 
   // Add an asset to the collection
@@ -136,6 +179,31 @@ async function main() {
     // (authority) will receive the NFT.
     owner: payer.publicKey,
   }).sendAndConfirm(umi, txConfig);
+
+  // EXAMPLE: Transfer the NFT to a different address
+  // Replace this with an actual wallet address you want to transfer to
+  const recipientAddress = generateSigner(umi).publicKey; // For demo - generate a random address
+  console.log('» Generated recipient address for demo:', recipientAddress.toString());
+  console.log();
+
+  // Transfer the NFT
+  // await transferNFT(
+  //   umi,
+  //   asset.publicKey, // The asset we just created
+  //   collectionAddress.publicKey, // The collection it belongs to
+  //   recipientAddress, // Where to send it
+  // );
+
+  // // Verify the transfer by fetching the asset and checking the new owner
+  // const transferredAsset = await fetchAssetV1(umi, asset.publicKey);
+  // console.log('» Transfer verification:');
+  // console.log('  New owner:', transferredAsset.owner.toString());
+  // console.log('  Expected:', recipientAddress.toString());
+  // console.log(
+  //   '  Transfer successful:',
+  //   transferredAsset.owner.toString() === recipientAddress.toString(),
+  // );
+  // console.log();
 
   balance = await umi.rpc.getBalance(payer.publicKey);
   console.log('» Final balance:', Number(balance.basisPoints) / 1_000_000_000, 'SOL');
